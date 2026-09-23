@@ -1,0 +1,245 @@
+{
+  "domain_id": "voice-phishing",
+  "domain_name": "보이스피싱 (전기통신금융사기)",
+  "nodes": [
+    {
+      "id": "C01",
+      "label": "사회 이슈 및 상황 악용 사회공학적 설계",
+      "node_type": "CAUSE",
+      "urgency_score": 70.0,
+      "tech_expectation_score": 60.0,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "재난지원금, 난방비 등 시의성 이슈와 개인정보 유출을 결부한 표적 시나리오 설계",
+      "reference_chips": []
+    },
+    {
+      "id": "C02",
+      "label": "예방·대응·수사 기술의 미비",
+      "node_type": "CAUSE",
+      "urgency_score": 67.0,
+      "tech_expectation_score": 63.0,
+      "quadrant": "BALANCED",
+      "description": "FDS 정보공유 부재, 시그니처 기반 악성앱 사후대응 한계 및 기본앱 탑재 이해관계 충돌",
+      "reference_chips": []
+    },
+    {
+      "id": "C03",
+      "label": "휴대폰 본인확인 서비스의 악용",
+      "node_type": "CAUSE",
+      "urgency_score": 66.3,
+      "tech_expectation_score": 66.3,
+      "quadrant": "TECH_DRIVEN",
+      "description": "신분증 위조 및 명의도용을 통한 비대면 알뜰폰 개통 및 본인인증 악용",
+      "reference_chips": []
+    },
+    {
+      "id": "C04",
+      "label": "통신사의 소극적 협조",
+      "node_type": "CAUSE",
+      "urgency_score": 65.3,
+      "tech_expectation_score": 63.3,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "대포폰·스팸문자 관리 미흡 및 금융권 대비 소극적 대응",
+      "reference_chips": []
+    },
+    {
+      "id": "C05",
+      "label": "통신사·금융사의 부분적 피해구제 활동",
+      "node_type": "CAUSE",
+      "urgency_score": 65.3,
+      "tech_expectation_score": 59.8,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "금융사의 무배상 책임 원칙 및 피해자 과실 전가 경향",
+      "reference_chips": []
+    },
+    {
+      "id": "C06",
+      "label": "금전적 목적의 범죄 참여·노출 증가",
+      "node_type": "CAUSE",
+      "urgency_score": 64.8,
+      "tech_expectation_score": 61.8,
+      "quadrant": "BALANCED",
+      "description": "취업난/대출금리 상승, 청년·취약계층 대상 고액 알바(수거책·송금책) 가담",
+      "reference_chips": []
+    },
+    {
+      "id": "C07",
+      "label": "모니터링 시스템의 한계",
+      "node_type": "CAUSE",
+      "urgency_score": 64.3,
+      "tech_expectation_score": 63.0,
+      "quadrant": "BALANCED",
+      "description": "금융·통신사 탐지 룰 영업비밀 간주로 비공유, 신고 채널 분산",
+      "reference_chips": []
+    },
+    {
+      "id": "C08",
+      "label": "기술 발전에 따른 범죄 취약성 증가 및 수법 진화",
+      "node_type": "CAUSE",
+      "urgency_score": 64.0,
+      "tech_expectation_score": 65.0,
+      "quadrant": "TECH_DRIVEN",
+      "description": "생성형 AI 딥페이크 음성/영상 복제, 원격제어 악성앱 및 가상자산 자금세탁",
+      "reference_chips": [
+        {
+          "title": "사과플러스 10호: 생성형 AI 사이버범죄 대응방향",
+          "source_type": "동향브리프",
+          "link_or_meta": "2023-12"
+        },
+        {
+          "title": "TruePrint Lab: 현장지문 AI 지문추출 (폴리스랩 2.0)",
+          "source_type": "우수성과30선",
+          "link_or_meta": "유케어트론"
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "label": "통신 장비 불법 사용 규제 부족",
+      "node_type": "CAUSE",
+      "urgency_score": 63.3,
+      "tech_expectation_score": 61.5,
+      "quadrant": "BALANCED",
+      "description": "발신번호 변작 불법 중계기(심박스) 탐지 한계 및 CMC 기능 악용",
+      "reference_chips": []
+    },
+    {
+      "id": "C10",
+      "label": "공익 목적 개인정보 수집 허용 조항 부재",
+      "node_type": "CAUSE",
+      "urgency_score": 62.5,
+      "tech_expectation_score": 61.3,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "범죄 수사 및 선제 차단을 위한 공익 목적 데이터 수집 근거 법령 부족",
+      "reference_chips": []
+    },
+    {
+      "id": "C11",
+      "label": "이해당사자 간 협력 부족",
+      "node_type": "CAUSE",
+      "urgency_score": 62.3,
+      "tech_expectation_score": 60.5,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "통신 3사 간 경쟁, 금융-통신 간 단절, 과기정통부·금융위 칸막이",
+      "reference_chips": []
+    },
+    {
+      "id": "C12",
+      "label": "국제협력 부족",
+      "node_type": "CAUSE",
+      "urgency_score": 61.8,
+      "tech_expectation_score": 60.3,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "해외 콜센터 거점 수사 한계 및 외교적 차원의 수사공조 부재",
+      "reference_chips": []
+    },
+    {
+      "id": "C13",
+      "label": "개인의 안일한 사고 및 조치 미흡",
+      "node_type": "CAUSE",
+      "urgency_score": 61.5,
+      "tech_expectation_score": 59.3,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "과신으로 인한 보안앱 미설치 및 예방 수칙 미준수",
+      "reference_chips": []
+    },
+    {
+      "id": "C14",
+      "label": "통신비밀보호법으로 인한 음성 분석 불가",
+      "node_type": "CAUSE",
+      "urgency_score": 61.5,
+      "tech_expectation_score": 64.3,
+      "quadrant": "TECH_DRIVEN",
+      "description": "AI 음성·문자 사기 판별 기술이 존재하나 법적 규제로 실시간 탐지 불가",
+      "reference_chips": []
+    },
+    {
+      "id": "C15",
+      "label": "신고 포상금 제도의 실효성 낮음",
+      "node_type": "CAUSE",
+      "urgency_score": 60.8,
+      "tech_expectation_score": 60.8,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "신고 유인 부족, 포상금 규모 미흡 및 홍보 부족",
+      "reference_chips": []
+    },
+    {
+      "id": "C16",
+      "label": "평판 저하로 인한 미신고",
+      "node_type": "CAUSE",
+      "urgency_score": 60.5,
+      "tech_expectation_score": 59.0,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "자책감 및 위신 손상 우려로 신고를 기피해 연쇄 피해 확산",
+      "reference_chips": []
+    },
+    {
+      "id": "E01",
+      "label": "피싱 범죄수익금의 해외 유출",
+      "node_type": "IMPACT",
+      "urgency_score": 69.0,
+      "tech_expectation_score": 63.3,
+      "quadrant": "TECH_DRIVEN",
+      "description": "가상자산 환전 및 해외 불법 송금을 통한 국부 유출 및 회수 불가",
+      "reference_chips": []
+    },
+    {
+      "id": "E02",
+      "label": "제도의 복잡화·불편함",
+      "node_type": "IMPACT",
+      "urgency_score": 65.3,
+      "tech_expectation_score": 60.3,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "계좌개설 20일 제한, 2차 인증 강화 등 일반 시민 일상 불편",
+      "reference_chips": []
+    },
+    {
+      "id": "E03",
+      "label": "사회 구성원 간 신뢰도 저하",
+      "node_type": "IMPACT",
+      "urgency_score": 63.8,
+      "tech_expectation_score": 58.5,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "비대면 금융 거래 불신 및 공공기관 사칭으로 인한 정책 불신 초래",
+      "reference_chips": []
+    },
+    {
+      "id": "E04",
+      "label": "국가 예산 지출 증가",
+      "node_type": "IMPACT",
+      "urgency_score": 63.8,
+      "tech_expectation_score": 59.5,
+      "quadrant": "BALANCED",
+      "description": "경찰 수사력 낭비, 예방 시스템 구축 및 피해자 지원 비용 증가",
+      "reference_chips": []
+    },
+    {
+      "id": "E05",
+      "label": "유익한 통신서비스 기술의 악용",
+      "node_type": "IMPACT",
+      "urgency_score": 63.5,
+      "tech_expectation_score": 64.0,
+      "quadrant": "TECH_DRIVEN",
+      "description": "심박스, 원격제어 기능 등 편의 ICT 인프라가 범죄 도구화",
+      "reference_chips": []
+    },
+    {
+      "id": "E06",
+      "label": "서민경제 피해",
+      "node_type": "IMPACT",
+      "urgency_score": 61.0,
+      "tech_expectation_score": 57.5,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "청년, 금융소외자의 회생 불가 자산 손실 및 극단적 선택 등 가정 파괴",
+      "reference_chips": []
+    }
+  ],
+  "edges": [
+    { "source": "C01", "target": "E06", "relation_desc": "사회공학적 표적 공략으로 서민경제 파탄 유발" },
+    { "source": "C03", "target": "E02", "relation_desc": "명의도용 개통 악용으로 비대면 인증 규제 강화 유발" },
+    { "source": "C08", "target": "E01", "relation_desc": "가상자산 세탁 및 AI 악용으로 범죄수익 해외 유출 가속" },
+    { "source": "C08", "target": "E05", "relation_desc": "고도화된 ICT 인프라가 범죄 수단으로 변질" },
+    { "source": "C09", "target": "E05", "relation_desc": "불법 중계기로 유익한 통신망 악용" },
+    { "source": "C14", "target": "E01", "relation_desc": "실시간 음성 차단 불가로 인한 송금 완료 및 유출" }
+  ]
+}
