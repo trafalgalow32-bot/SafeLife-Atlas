@@ -1,6 +1,7 @@
 // App.tsx
 
 import { useEffect, useState } from 'react';
+import { Zap, Target } from 'lucide-react';
 import { fetchDomainGraph } from './api/client';
 import type { DomainGraphResponse, ProblemNodeData } from './types/graph';
 import { GraphCanvas } from './components/GraphCanvas';
@@ -121,6 +122,9 @@ export default function App() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
                   fontSize: '12px',
                   fontWeight: 700,
                   padding: '2px 8px',
@@ -129,6 +133,7 @@ export default function App() {
                   color: selectedNode.node_type === 'CAUSE' ? '#475569' : '#1d4ed8',
                 }}
               >
+                {selectedNode.node_type === 'CAUSE' ? <Zap size={12} aria-hidden="true" /> : <Target size={12} aria-hidden="true" />}
                 {selectedNode.node_type === 'CAUSE' ? '발생 원인' : '파급 영향'}
               </span>
               <button

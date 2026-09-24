@@ -23,7 +23,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,  # 공개 읽기전용 API(자격증명 미사용). 배포 시 allow_origins를 실제 프론트 도메인으로 제한 권장
     allow_methods=["*"],
     allow_headers=["*"],
 )

@@ -1,4 +1,4 @@
-// GraphCanvas.tsx (그래프 자동 레이아웃 컴포넌트)
+// GraphCanvas.tsx (구조적 그리드 레이아웃 — 원인 좌측 2열 / 영향 우측. dagre 자동 레이아웃은 엣지 밀도 확보 후로 보류)
 
 import React, { useMemo } from 'react';
 import {

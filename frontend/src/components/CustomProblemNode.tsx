@@ -2,6 +2,7 @@
 
 import React, { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
+import { Zap, Target } from 'lucide-react';
 import type { ProblemNodeData } from '../types/graph';
 
 interface CustomProblemNodeProps {
@@ -38,7 +39,8 @@ export const CustomProblemNode: React.FC<CustomProblemNodeProps> = memo(({ data 
 
       {/* 헤더: ID 뱃지 & 유형 */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-        <span style={{ fontWeight: 800, color: color.text, fontSize: '10px' }}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '3px', fontWeight: 800, color: color.text, fontSize: '10px' }}>
+          {isCause ? <Zap size={11} aria-hidden="true" /> : <Target size={11} aria-hidden="true" />}
           [{data.id}] {isCause ? '원인' : '영향'}
         </span>
         <span
