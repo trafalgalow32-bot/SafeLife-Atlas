@@ -1,23 +1,27 @@
 # analytics.py
 
-from typing import Dict, List, Union
-from pydantic import BaseModel, Field
+from typing import List, Dict
+from pydantic import BaseModel
 
-class QuadrantSummary(BaseModel):
-    count: int
-    node_ids: List[str]
 
 class RankedNode(BaseModel):
     id: str
     label: str
     score: float
 
+
 class GapNode(BaseModel):
     id: str
     label: str
     urgency_score: float
     tech_expectation_score: float
-    gap: float = Field(..., description="시급성 - 과기기대 (양수면 제도대응 우선, 음수면 기술선행)")
+    gap: float
+
+
+class QuadrantSummary(BaseModel):
+    count: int
+    node_ids: List[str]
+
 
 class DomainAnalyticsResponse(BaseModel):
     domain_id: str

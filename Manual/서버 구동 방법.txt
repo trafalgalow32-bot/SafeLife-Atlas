@@ -3,7 +3,8 @@
 프론트엔드 (UI 클라이언트): Node.js 런타임 $\rightarrow$ Vite HMR 개발 서버 구동 (http://localhost:5173)
 사전 권장사항: VS Code에서 터미널 창을 2개 분할(Split)하여 각각 백엔드와 프론트엔드 프로세스를 할당합니다.
 
-[서버 실행 명령어]1. 백엔드 (FastAPI) 구동Git Bash 터미널 사용 시:
+[서버 실행 명령어]
+1. 백엔드 (FastAPI) 구동Git Bash 터미널 사용 시:
 
 # 1. 루트 경로로 이동
 cd /c/KHK/SafeLife-Atlas

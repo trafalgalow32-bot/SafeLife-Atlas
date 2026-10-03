@@ -48,7 +48,9 @@ def health_check():
 @app.get("/api/v1/domains/{domain_id}/graph", response_model=DomainGraphResponse)
 def get_domain_graph(domain_id: str):
     data = load_domain_data(domain_id)
+    # 총 노드 수 갱신 및 최신 스키마 반환
     data["total_nodes"] = len(data.get("nodes", []))
+    data["data_source_version"] = data.get("data_source_version", "2026-HYBRID")
     return data
 
 @app.get("/api/v1/domains/{domain_id}/analytics", response_model=DomainAnalyticsResponse)
@@ -68,7 +70,7 @@ def get_domain_analytics(domain_id: str):
     avg_tech = round(sum(n["tech_expectation_score"] for n in nodes) / total_nodes, 2)
 
     # 2. 사분면 분포 집계
-    quadrant_dist: Dict[str, QuadrantSummary] = {}
+    quadrant_dist: dict[str, QuadrantSummary] = {}
     for n in nodes:
         q = n.get("quadrant", "BALANCED")
         if q not in quadrant_dist:

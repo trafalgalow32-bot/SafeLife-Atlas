@@ -1,6 +1,6 @@
-// GraphCanvas.tsx (구조적 그리드 레이아웃 — 원인 좌측 2열 / 영향 우측. dagre 자동 레이아웃은 엣지 밀도 확보 후로 보류)
+// GraphCanvas.tsx
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import {
   ReactFlow,
   Controls,
@@ -34,9 +34,9 @@ function getStructuredLayout(
 
   const nodes: Node[] = [];
 
-  // 발생 원인 (16개): 좌측 2개 컬럼으로 지그재그 배치 (간격 축소 및 압축)
+  // 발생 원인 (16개): 좌측 2개 컬럼으로 지그재그 배치
   causes.forEach((node, index) => {
-    const col = index % 2; // 0열 또는 1열
+    const col = index % 2;
     const row = Math.floor(index / 2);
     nodes.push({
       id: node.id,
@@ -76,24 +76,63 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
   edgesData,
   onNodeClick,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState<boolean>(false);
+
   const { nodes, edges } = useMemo(
     () => getStructuredLayout(nodesData, edgesData),
     [nodesData, edgesData]
   );
 
+  // 브라우저 리플로우(Reflow) 완료 후 부모 실제 픽셀(크기 > 0) 확정 시점에 ReactFlow 마운트
+  useEffect(() => {
+    let animationFrameId: number;
+
+    const checkContainerSize = () => {
+      if (
+        containerRef.current &&
+        containerRef.current.clientWidth > 0 &&
+        containerRef.current.clientHeight > 0
+      ) {
+        setIsReady(true);
+      } else {
+        animationFrameId = requestAnimationFrame(checkContainerSize);
+      }
+    };
+
+    checkContainerSize();
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, []);
+
   return (
-    <div style={{ width: '100%', height: '100%', background: '#f8fafc' }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        nodeTypes={nodeTypes}
-        onNodeClick={(_, node) => onNodeClick(node.data as unknown as ProblemNodeData)}
-        fitView
-        fitViewOptions={{ padding: 0.15 }}
-      >
-        <Background variant={BackgroundVariant.Dots} gap={16} size={1} color="#cbd5e1" />
-        <Controls />
-      </ReactFlow>
+    <div
+      ref={containerRef}
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        background: '#f8fafc',
+      }}
+    >
+      {isReady && (
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          onNodeClick={(_, node) => onNodeClick(node.data as unknown as ProblemNodeData)}
+          fitView
+          fitViewOptions={{ padding: 0.15 }}
+          style={{ width: '100%', height: '100%' }}
+        >
+          <Background variant={BackgroundVariant.Dots} gap={16} size={1} color="#cbd5e1" />
+          <Controls />
+        </ReactFlow>
+      )}
     </div>
   );
 };
