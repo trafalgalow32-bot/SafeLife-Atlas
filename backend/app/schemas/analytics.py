@@ -1,6 +1,6 @@
 # analytics.py
 
-from typing import List, Dict
+from typing import List, Dict, Optional
 from pydantic import BaseModel
 
 
@@ -16,6 +16,8 @@ class GapNode(BaseModel):
     urgency_score: float
     tech_expectation_score: float
     gap: float
+    trend_keyword: Optional[str] = None
+    trend_weight: Optional[float] = None
 
 
 class QuadrantSummary(BaseModel):

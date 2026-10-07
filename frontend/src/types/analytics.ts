@@ -12,6 +12,8 @@ export interface GapNode {
   urgency_score: number;
   tech_expectation_score: number;
   gap: number;
+  trend_keyword?: string;
+  trend_weight?: number;
 }
 
 export interface QuadrantSummary {
@@ -30,14 +32,4 @@ export interface DomainAnalyticsResponse {
   top_urgency_nodes: RankedNode[];
   top_tech_nodes: RankedNode[];
   priority_gap_nodes: GapNode[];
-}
-
-export interface GapNode {
-  id: string;
-  label: string;
-  urgency_score: number;
-  tech_expectation_score: number;
-  gap: number;
-  trend_keyword?: string;
-  trend_weight?: number;
 }

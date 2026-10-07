@@ -94,6 +94,8 @@ def get_domain_analytics(domain_id: str):
             urgency_score=n["urgency_score"],
             tech_expectation_score=n["tech_expectation_score"],
             gap=round(n["urgency_score"] - n["tech_expectation_score"], 2),
+            trend_keyword=n.get("trend_keyword"),
+            trend_weight=n.get("trend_weight"),
         )
         for n in nodes
     ]

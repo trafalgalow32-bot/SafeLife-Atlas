@@ -28,6 +28,8 @@ class ProblemNode(BaseModel):
     quadrant: QuadrantType
     description: str = Field(..., description="세부문제 정의 및 상세 설명")
     reference_chips: List[ReferenceChip] = Field(default_factory=list)
+    trend_keyword: Optional[str] = None
+    trend_weight: Optional[float] = None
 
 class ProblemEdge(BaseModel):
     source: str = Field(..., description="원인 노드 ID")
