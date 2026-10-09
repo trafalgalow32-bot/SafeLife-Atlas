@@ -1,0 +1,36 @@
+# Render Blueprint — SafeLife-Atlas
+# 백엔드(FastAPI/uvicorn) + 프론트(Vite 정적)를 한 번에 배포한다.
+# 참고: Blueprint YAML은 변수 치환을 지원하지 않으므로,
+#       백엔드 URL은 프론트 buildCommand 셸에서 $API_HOST로 조립한다.
+services:
+  # 1) 백엔드 API — FastAPI (requirements.txt는 루트, 실행은 backend/)
+  - type: web
+    name: safelife-atlas-api
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+
+  # 2) 프론트엔드 — Vite 빌드 → 정적 호스팅 (전역 CDN, 무료)
+  - type: web
+    name: safelife-atlas-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && VITE_API_BASE_URL="https://$API_HOST/api/v1" npm run build
+    staticPublishPath: ./dist
+    envVars:
+      # 백엔드 서비스의 호스트명을 빌드 시점에 주입 (위 셸에서 full URL로 조립)
+      - key: API_HOST
+        fromService:
+          type: web
+          name: safelife-atlas-api
+          property: host
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
