@@ -60,7 +60,7 @@ export default function App() {
       >
         <div>
           <h1 style={{ fontSize: '18px', margin: 0, fontWeight: 700 }}>SafeLife-Atlas : 사회문제 세부구조 탐색기</h1>
-          <span style={{ fontSize: '13px', color: '#64748b' }}>
+          <span style={{ fontSize: '13px', color: '#94a3b8' }}>
             {graphData ? `${graphData.domain_name} (총 ${graphData.total_nodes}개 노드)` : '데이터 로딩 중...'}
           </span>
         </div>
