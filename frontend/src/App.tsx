@@ -60,7 +60,7 @@ export default function App() {
       >
         <div>
           <h1 style={{ fontSize: '18px', margin: 0, fontWeight: 700 }}>SafeLife-Atlas : 사회문제 세부구조 탐색기</h1>
-          <span style={{ fontSize: '13px', color: '#94a3b8' }}>
+          <span style={{ fontSize: '13px', color: '#64748b' }}>
             {graphData ? `${graphData.domain_name} (총 ${graphData.total_nodes}개 노드)` : '데이터 로딩 중...'}
           </span>
         </div>
@@ -262,11 +262,11 @@ export default function App() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', background: '#f8fafc', padding: '12px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
                       <span style={{ color: '#475569', fontWeight: 600 }}>시급성 점수</span>
-                      <strong style={{ color: '#0284c7', fontSize: '14px' }}>{selectedNode.urgency_score}점</strong>
+                      <strong style={{ color: '#0369a1', fontSize: '14px' }}>{selectedNode.urgency_score}점</strong>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
                       <span style={{ color: '#475569', fontWeight: 600 }}>과기 해결 기대</span>
-                      <strong style={{ color: '#16a34a', fontSize: '14px' }}>{selectedNode.tech_expectation_score}점</strong>
+                      <strong style={{ color: '#15803d', fontSize: '14px' }}>{selectedNode.tech_expectation_score}점</strong>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', paddingTop: '6px', borderTop: '1px solid #e2e8f0' }}>
                       <span style={{ color: '#475569', fontWeight: 600 }}>대응 사분면</span>
@@ -295,7 +295,7 @@ export default function App() {
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {selectedNode.reference_chips.map((chip, idx) => (
                           <div key={idx} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '10px 12px', borderRadius: '6px', fontSize: '12px' }}>
-                            <div style={{ color: '#0284c7', fontWeight: 700, marginBottom: '2px' }}>[{chip.source_type}]</div>
+                            <div style={{ color: '#0369a1', fontWeight: 700, marginBottom: '2px' }}>[{chip.source_type}]</div>
                             <div style={{ color: '#1e293b', lineHeight: 1.4 }}>{chip.title}</div>
                           </div>
                         ))}
@@ -304,7 +304,7 @@ export default function App() {
                   )}
                 </div>
               ) : (
-                <div style={{ textAlign: 'center', color: '#94a3b8', marginTop: '60px', fontSize: '13px' }}>
+                <div style={{ textAlign: 'center', color: '#64748b', marginTop: '60px', fontSize: '13px' }}>
                   그래프 캔버스에서 확인하고자 하는 세부문제 노드를 선택해주세요.
                 </div>
               )

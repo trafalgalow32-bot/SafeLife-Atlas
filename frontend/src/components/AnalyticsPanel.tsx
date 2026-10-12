@@ -21,17 +21,17 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({ analytics, onSel
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
           <div style={{ background: '#ffffff', padding: '10px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
             <span style={{ color: '#64748b', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '4px' }}>
-              <TrendingUp size={13} color="#0284c7" aria-hidden="true" />
+              <TrendingUp size={13} color="#0369a1" aria-hidden="true" />
               평균 시급성
             </span>
-            <strong style={{ color: '#0284c7', fontSize: '15px' }}>{analytics.avg_urgency}점</strong>
+            <strong style={{ color: '#0369a1', fontSize: '15px' }}>{analytics.avg_urgency}점</strong>
           </div>
           <div style={{ background: '#ffffff', padding: '10px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
             <span style={{ color: '#64748b', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '4px' }}>
-              <Cpu size={13} color="#16a34a" aria-hidden="true" />
+              <Cpu size={13} color="#15803d" aria-hidden="true" />
               과기해결 기대
             </span>
-            <strong style={{ color: '#16a34a', fontSize: '15px' }}>{analytics.avg_tech_expectation}점</strong>
+            <strong style={{ color: '#15803d', fontSize: '15px' }}>{analytics.avg_tech_expectation}점</strong>
           </div>
         </div>
       </section>
@@ -40,10 +40,10 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({ analytics, onSel
       <section>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
           <strong style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: '#0f172a', fontSize: '13px' }}>
-            <AlertTriangle size={14} color="#d97706" aria-hidden="true" />
+            <AlertTriangle size={14} color="#b45309" aria-hidden="true" />
             해결 갭(Gap) 우선 노드
           </strong>
-          <span style={{ fontSize: '10px', color: '#94a3b8' }}>시급성 - 과기기대</span>
+          <span style={{ fontSize: '10px', color: '#64748b' }}>시급성 - 과기기대</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {analytics.priority_gap_nodes.map((node, index) => (
@@ -62,7 +62,7 @@ export const AnalyticsPanel: React.FC<AnalyticsPanelProps> = ({ analytics, onSel
                 <span style={{ fontWeight: 700, color: index === 0 ? '#b45309' : '#475569' }}>
                   {index + 1}위 · {node.id}
                 </span>
-                <span style={{ fontWeight: 700, color: '#d97706', fontFamily: 'monospace' }}>
+                <span style={{ fontWeight: 700, color: '#b45309', fontFamily: 'monospace' }}>
                   Gap {node.gap > 0 ? `+${node.gap.toFixed(2)}` : node.gap.toFixed(2)}
                 </span>
               </div>
