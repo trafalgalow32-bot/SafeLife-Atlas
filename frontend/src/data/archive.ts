@@ -6,6 +6,7 @@ export interface ArchiveItem {
   license: string;
   org: string;
   date: string;
+  url?: string;
 }
 
 export const ARCHIVE_FIELDS = ['전체', '생활안전', '재난재해', '건강', '가족', '환경'];
