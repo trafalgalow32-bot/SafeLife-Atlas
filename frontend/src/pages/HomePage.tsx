@@ -23,11 +23,11 @@ function DomainCard({ domain }: { domain: DomainMeta }) {
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
         <StatusBadge status={domain.status} />
-        {domain.nodeSummary && <span style={{ fontSize: 12, color: '#94a3b8' }}>{domain.nodeSummary}</span>}
+        {domain.nodeSummary && <span style={{ fontSize: 12, color: '#64748b' }}>{domain.nodeSummary}</span>}
       </div>
       <div style={{ fontSize: 20, fontWeight: 700 }}>{domain.name}</div>
       <p style={{ fontSize: 14, lineHeight: 1.5, color: '#475569', margin: 0 }}>{domain.shortDef}</p>
-      <span style={{ fontSize: domain.status === 'live' ? 14 : 13, fontWeight: domain.status === 'live' ? 600 : 400, color: domain.status === 'live' ? '#b45309' : '#94a3b8', marginTop: 4 }}>
+      <span style={{ fontSize: domain.status === 'live' ? 14 : 13, fontWeight: domain.status === 'live' ? 600 : 400, color: domain.status === 'live' ? '#b45309' : '#64748b', marginTop: 4 }}>
         {domain.status === 'live' ? '탐색하기 →' : domain.status === 'candidate' ? '로드맵 검토 중' : '곧 공개'}
       </span>
     </>
@@ -36,7 +36,7 @@ function DomainCard({ domain }: { domain: DomainMeta }) {
   if (domain.status === 'live') {
     return <Link to={`/domain/${domain.id}`} style={baseStyle}>{inner}</Link>;
   }
-  return <div style={{ ...baseStyle, opacity: 0.72 }}>{inner}</div>;
+  return <div style={baseStyle}>{inner}</div>;
 }
 
 export default function HomePage() {
@@ -72,7 +72,7 @@ export default function HomePage() {
             <Link key={i} to="/archive" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: '14px 20px', borderBottom: i < 2 ? '1px solid #f1f5f9' : 'none', textDecoration: 'none', color: 'inherit' }}>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontWeight: 500, fontSize: 15 }}>{item.title}</div>
-                <div style={{ fontSize: 12, color: '#94a3b8', marginTop: 2 }}>{item.field} · 공공누리 {item.license}</div>
+                <div style={{ fontSize: 12, color: '#64748b', marginTop: 2 }}>{item.field} · 공공누리 {item.license}</div>
               </div>
               <span style={{ fontSize: 13, color: '#64748b', whiteSpace: 'nowrap' }}>{item.date}</span>
             </Link>
