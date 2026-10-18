@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
 from app.schemas.graph import DomainGraphResponse
+from app.schemas.archive import ArchiveListResponse
 from app.schemas.analytics import (
     DomainAnalyticsResponse,
     QuadrantSummary,
@@ -44,6 +45,16 @@ def root():
 @app.get("/api/v1/health")
 def health_check():
     return {"status": "ok", "project": "SafeLife-Atlas"}
+
+@app.get("/api/v1/archive", response_model=ArchiveListResponse)
+def get_archive():
+    """자료실 공공자료 목록(seed JSON 서빙). 슬라이스 1에서 DB 우선 + seed 폴백으로 확장 예정."""
+    file_path = DATA_DIR / "archive.json"
+    if not file_path.exists():
+        return ArchiveListResponse(items=[])
+    with open(file_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return ArchiveListResponse(items=data.get("items", []))
 
 @app.get("/api/v1/domains/{domain_id}/graph", response_model=DomainGraphResponse)
 def get_domain_graph(domain_id: str):

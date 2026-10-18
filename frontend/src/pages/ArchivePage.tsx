@@ -1,24 +1,25 @@
-// ArchivePage.tsx — 자료실: 과학기술 x 사회문제 공공자료 목록 (필터·검색·페이지네이션 배선).
+// ArchivePage.tsx — 자료실: 백엔드 서빙(seed) 기반 + 필터·검색·페이지네이션.
 
 import { useMemo, useState } from 'react';
-import { ARCHIVE_ITEMS } from '../data/archive';
+import { useArchive } from '../api/useArchive';
 
 const PAGE_SIZE = 4;
 
 export default function ArchivePage() {
+  const { items, loading } = useArchive();
   const [field, setField] = useState('전체');
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
 
   // 분야 칩은 실제 데이터에서 파생 → 결과 0인 '죽은 칩'이 생기지 않음.
   const fields = useMemo(
-    () => ['전체', ...Array.from(new Set(ARCHIVE_ITEMS.map((i) => i.field)))],
-    [],
+    () => ['전체', ...Array.from(new Set(items.map((i) => i.field)))],
+    [items],
   );
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return ARCHIVE_ITEMS.filter((item) => {
+    return items.filter((item) => {
       const fieldOk = field === '전체' || item.field === field;
       const queryOk =
         q === '' ||
@@ -26,7 +27,7 @@ export default function ArchivePage() {
         item.org.toLowerCase().includes(q);
       return fieldOk && queryOk;
     });
-  }, [field, query]);
+  }, [items, field, query]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const safePage = Math.min(page, pageCount);
@@ -78,7 +79,7 @@ export default function ArchivePage() {
         </div>
 
         <div aria-live="polite" style={{ fontSize: 13, color: '#475569', marginBottom: 10 }}>
-          총 {filtered.length}건{field !== '전체' ? ` · ${field}` : ''}{query.trim() ? ` · "${query.trim()}" 검색` : ''}
+          {loading ? '자료를 불러오는 중…' : <>총 {filtered.length}건{field !== '전체' ? ` · ${field}` : ''}{query.trim() ? ` · "${query.trim()}" 검색` : ''}</>}
         </div>
 
         <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12, overflow: 'hidden' }}>
@@ -90,7 +91,11 @@ export default function ArchivePage() {
             <div style={{ width: 96, textAlign: 'right' }}>받기</div>
           </div>
 
-          {pageItems.length === 0 ? (
+          {loading && items.length === 0 ? (
+            <div style={{ padding: '48px 20px', textAlign: 'center', color: '#64748b', fontSize: 14 }}>
+              자료를 불러오는 중입니다…
+            </div>
+          ) : pageItems.length === 0 ? (
             <div style={{ padding: '48px 20px', textAlign: 'center', color: '#64748b', fontSize: 14 }}>
               조건에 맞는 자료가 없습니다. 분야나 검색어를 바꿔 보세요.
             </div>

@@ -21,3 +21,11 @@ export async function fetchDomainAnalytics(domainId: string): Promise<DomainAnal
   }
   return response.json();
 }
+export async function fetchArchive(): Promise<import('../data/archive').ArchiveItem[]> {
+  const response = await fetch(`${API_BASE_URL}/archive`);
+  if (!response.ok) {
+    throw new Error(`자료실 데이터 로드 실패 (HTTP ${response.status})`);
+  }
+  const data = await response.json();
+  return data.items ?? [];
+}

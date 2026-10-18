@@ -2,7 +2,7 @@
 
 import { Link } from 'react-router-dom';
 import { DOMAINS, type DomainMeta } from '../data/domains';
-import { ARCHIVE_ITEMS } from '../data/archive';
+import { useArchive } from '../api/useArchive';
 
 function StatusBadge({ status }: { status: DomainMeta['status'] }) {
   if (status === 'live') {
@@ -40,6 +40,7 @@ function DomainCard({ domain }: { domain: DomainMeta }) {
 }
 
 export default function HomePage() {
+  const { items: archiveItems } = useArchive();
   return (
     <>
       <section style={{ background: '#fff', borderBottom: '1px solid #e2e8f0' }}>
@@ -68,7 +69,7 @@ export default function HomePage() {
           <Link to="/archive" style={{ fontSize: 13, fontWeight: 600, color: '#b45309', textDecoration: 'none' }}>전체 보기 →</Link>
         </div>
         <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12, padding: '4px 0' }}>
-          {ARCHIVE_ITEMS.slice(0, 3).map((item, i) => (
+          {archiveItems.slice(0, 3).map((item, i) => (
             <Link key={i} to="/archive" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: '14px 20px', borderBottom: i < 2 ? '1px solid #f1f5f9' : 'none', textDecoration: 'none', color: 'inherit' }}>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontWeight: 500, fontSize: 15 }}>{item.title}</div>
