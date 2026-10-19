@@ -50,3 +50,5 @@ npm run dev
 실행 순서:프론트엔드가 마운트될 때 백엔드 API에 즉시 요청을 전송하므로, 백엔드 서버를 먼저 실행한 후 프론트엔드를 구동해야 초기화 통신 에러를 방지할 수 있습니다.   
 백엔드 실행 경로 종속성:Uvicorn 실행 시 반드시 cd backend로 이동한 상태에서 app.main:app을 호출해야 합니다. 루트 경로에서 직접 실행하면 ModuleNotFoundError: No module named 'app'이 발생합니다.
 서버 종료:실행 중인 터미널에서 각각 Ctrl + C를 누르면 서버 프로세스가 정상 종료됩니다.
+
+renders URL : https://safelife-atlas-web.onrender.com
