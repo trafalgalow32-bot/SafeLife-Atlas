@@ -21,3 +21,6 @@ websockets==16.1.1
 sqlmodel==0.0.48
 SQLAlchemy==2.0.55
 psycopg[binary]==3.2.9
+# slice 2 — 관리자 인증 (JWT + OAuth2 password form)
+PyJWT==2.10.1
+python-multipart==0.0.20

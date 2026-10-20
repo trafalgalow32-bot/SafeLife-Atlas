@@ -16,6 +16,7 @@ from app.schemas.analytics import (
     GapNode,
 )
 from app.db import init_db, get_engine
+from app.routers.admin import router as admin_router
 
 
 @asynccontextmanager
@@ -39,6 +40,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(admin_router)
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 

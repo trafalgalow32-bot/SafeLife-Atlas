@@ -19,6 +19,14 @@ services:
       # 설정 전까지 백엔드는 seed JSON으로 폴백하므로 공개 화면은 안 깨진다.
       - key: DATABASE_URL
         sync: false
+      # 관리자 인증 (slice 2). 공개 가입 없는 단일 관리자. 대시보드에서 수동 설정.
+      # ADMIN_PASSWORD는 강한 임의 문자열, JWT_SECRET은 고정(미설정 시 재시작마다 토큰 무효).
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
 
   # 2) 프론트엔드 — Vite 빌드 → 정적 호스팅 (전역 CDN, 무료)
   - type: web
