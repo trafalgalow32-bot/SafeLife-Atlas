@@ -1,24 +1,35 @@
 # main.py
 
 import json
+from contextlib import asynccontextmanager
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
 from app.schemas.graph import DomainGraphResponse
-from app.schemas.archive import ArchiveListResponse
+from app.schemas.archive import ArchiveItem, ArchiveListResponse
 from app.schemas.analytics import (
     DomainAnalyticsResponse,
     QuadrantSummary,
     RankedNode,
     GapNode,
 )
+from app.db import init_db, get_engine
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # DB가 설정돼 있으면 테이블 생성, 없거나 불가하면 조용히 넘어가고 seed 폴백으로 동작
+    init_db()
+    yield
+
 
 app = FastAPI(
     title="SafeLife-Atlas API",
     version="0.1.0",
-    description="제3차 과학기술 기반 사회문제해결 R&D 데이터 API"
+    description="제3차 과학기술 기반 사회문제해결 R&D 데이터 API",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
@@ -46,15 +57,57 @@ def root():
 def health_check():
     return {"status": "ok", "project": "SafeLife-Atlas"}
 
-@app.get("/api/v1/archive", response_model=ArchiveListResponse)
-def get_archive():
-    """자료실 공공자료 목록(seed JSON 서빙). 슬라이스 1에서 DB 우선 + seed 폴백으로 확장 예정."""
+
+# --- 자료실: DB 우선 · seed JSON 폴백 (slice 1) ---
+# 결정 로그 Appendix J: 공개 영속층은 커밋된 seed JSON(git). 관리자 쓰기는 Postgres.
+# 무료 Postgres는 30일 만료/스핀다운 리스크가 있으므로, DB가 비었/만료/불가하면
+# seed로 폴백해 공개 화면이 절대 하드 브레이크되지 않게 한다.
+
+def _load_seed_archive() -> ArchiveListResponse:
+    """커밋된 seed JSON 서빙 — git에 사는 영속층(만료·스핀다운·재배포에 안 깨짐)."""
     file_path = DATA_DIR / "archive.json"
     if not file_path.exists():
         return ArchiveListResponse(items=[])
     with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     return ArchiveListResponse(items=data.get("items", []))
+
+
+def _read_published_from_db():
+    """published 자료만 DB에서 읽어 list[ArchiveItem] 반환.
+    DB 미설정·연결불가·만료·테이블부재 등 어떤 사유든 실패하면 None → seed 폴백."""
+    engine = get_engine()
+    if engine is None:
+        return None
+    try:
+        from sqlmodel import Session, select
+        from app.models.archive import ArchiveRecord
+        with Session(engine) as session:
+            rows = session.exec(
+                select(ArchiveRecord).where(ArchiveRecord.status == "published")
+            ).all()
+        return [
+            ArchiveItem(
+                title=r.title,
+                field=r.field,
+                license=r.license,
+                org=r.org,
+                date=r.date,
+                url=r.url,
+            )
+            for r in rows
+        ]
+    except Exception:
+        return None
+
+
+@app.get("/api/v1/archive", response_model=ArchiveListResponse)
+def get_archive():
+    """자료실 공공자료 목록. DB에 published 자료가 있으면 그걸, 비었/만료/불가면 seed JSON 폴백."""
+    items = _read_published_from_db()
+    if items:  # DB 연결 + published 행 존재
+        return ArchiveListResponse(items=items)
+    return _load_seed_archive()  # DB None/빈/불가 → 영속 seed 폴백
 
 @app.get("/api/v1/domains/{domain_id}/graph", response_model=DomainGraphResponse)
 def get_domain_graph(domain_id: str):

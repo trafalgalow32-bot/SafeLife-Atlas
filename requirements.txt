@@ -17,3 +17,7 @@ typing_extensions==4.16.0
 uvicorn==0.53.0
 watchfiles==1.3.0
 websockets==16.1.1
+# slice 1 — 자료실 DB 계층 (Postgres + seed 폴백)
+sqlmodel==0.0.48
+SQLAlchemy==2.0.55
+psycopg[binary]==3.2.9

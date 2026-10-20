@@ -13,6 +13,12 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.8
+      # 자료실 DB (slice 1). 무료 Postgres는 워크스페이스당 1개·blueprint 제약이 있어
+      # Render 대시보드에서 수동 생성(New > Postgres, Free, region=singapore) 후,
+      # 이 서비스 Environment에 Internal Database URL을 DATABASE_URL로 붙여넣는다.
+      # 설정 전까지 백엔드는 seed JSON으로 폴백하므로 공개 화면은 안 깨진다.
+      - key: DATABASE_URL
+        sync: false
 
   # 2) 프론트엔드 — Vite 빌드 → 정적 호스팅 (전역 CDN, 무료)
   - type: web
