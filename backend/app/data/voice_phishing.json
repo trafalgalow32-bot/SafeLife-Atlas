@@ -70,6 +70,8 @@
       "tech_expectation_score": 61.8,
       "quadrant": "BALANCED",
       "description": "청년·취약계층의 고액 알바 유혹(수거책·송금책 가담)",
+      "trend_keyword": "고수익 알바 미끼 수거책·송금책 모집",
+      "trend_weight": 0.78,
       "reference_chips": []
     },
     {
@@ -80,6 +82,8 @@
       "tech_expectation_score": 63.0,
       "quadrant": "BALANCED",
       "description": "신고 채널 다변화에 따른 일원화된 관제 대응 부재",
+      "trend_keyword": "미끼문자·스미싱 URL 대량유포 탐지 한계",
+      "trend_weight": 0.74,
       "reference_chips": []
     },
     {
@@ -100,6 +104,8 @@
       "tech_expectation_score": 61.5,
       "quadrant": "BALANCED",
       "description": "해외 발신번호 변작 중계기 및 CMC 기능 악용 차단 미흡",
+      "trend_keyword": "불법 중계기(SIM박스) 국제전화 우회",
+      "trend_weight": 0.7,
       "reference_chips": []
     },
     {
@@ -232,6 +238,8 @@
       "tech_expectation_score": 57.5,
       "quadrant": "POLICY_DRIVEN",
       "description": "회생 불가한 경제적 손실 및 가계 파탄 유발",
+      "trend_keyword": "메신저피싱 중·장년층 피해 급증",
+      "trend_weight": 0.8,
       "reference_chips": []
     }
   ],

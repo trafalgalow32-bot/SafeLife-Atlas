@@ -1,0 +1,311 @@
+{
+  "domain_id": "cyber-crime",
+  "domain_name": "사이버범죄",
+  "data_source_version": "2026-HYBRID",
+  "nodes": [
+    {
+      "id": "C01",
+      "label": "낮은 자기통제력·충동성",
+      "node_type": "CAUSE",
+      "urgency_score": 58,
+      "tech_expectation_score": 48,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "순간만족·충동 조절 능력(자기통제력) 저하가 온·오프라인 범죄의 공통 주요 원인으로 지목됨",
+      "reference_chips": []
+    },
+    {
+      "id": "C02",
+      "label": "일상·학업 긴장의 스트레스 해소 동기",
+      "node_type": "CAUSE",
+      "urgency_score": 55,
+      "tech_expectation_score": 46,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "일상긴장·학업스트레스의 해소 동기가 사이버불링 등 범죄의 동기로 작용",
+      "reference_chips": []
+    },
+    {
+      "id": "C03",
+      "label": "낮은 보안·윤리 의식 및 디지털 리터러시 부족",
+      "node_type": "CAUSE",
+      "urgency_score": 64,
+      "tech_expectation_score": 60,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "이용자의 낮은 보안·윤리 의식과 문해력 부족이 피해 노출과 가담을 함께 키움",
+      "reference_chips": [
+        {
+          "source_type": "문제개요서",
+          "title": "사이버범죄 (권헌영, KISTEP 사회문제해결플랫폼 '22)"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "label": "익명성",
+      "node_type": "CAUSE",
+      "urgency_score": 68,
+      "tech_expectation_score": 62,
+      "quadrant": "BALANCED",
+      "description": "신분 비노출로 발각 염려가 적어 범행이 대담해지는 사이버공간의 구조적 특성",
+      "reference_chips": []
+    },
+    {
+      "id": "C05",
+      "label": "비대면성(죄책감 희박)",
+      "node_type": "CAUSE",
+      "urgency_score": 60,
+      "tech_expectation_score": 50,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "상대의 피해를 직접 체감하지 못해 죄책감이 희박해지고 범행 문턱이 낮아짐",
+      "reference_chips": []
+    },
+    {
+      "id": "C06",
+      "label": "시공간 무제약(24시간·국경초월)",
+      "node_type": "CAUSE",
+      "urgency_score": 66,
+      "tech_expectation_score": 61,
+      "quadrant": "BALANCED",
+      "description": "시간·지리 제약 없이 24시간 어디서나 범죄가 발생·확산 가능",
+      "reference_chips": []
+    },
+    {
+      "id": "C07",
+      "label": "신종 기술·서비스 악용",
+      "node_type": "CAUSE",
+      "urgency_score": 74,
+      "tech_expectation_score": 70,
+      "quadrant": "TECH_DRIVEN",
+      "description": "생성형 AI·딥페이크 등 신기술이 사칭·합성·자동화 수법으로 악용되며 신종 범죄가 등장",
+      "trend_keyword": "딥페이크·생성형AI 사칭",
+      "trend_weight": 0.9,
+      "reference_chips": [
+        {
+          "source_type": "빅카인즈 집계",
+          "title": "2024-2026 사이버범죄·랜섬웨어·AI 피싱 언론 키워드"
+        },
+        {
+          "source_type": "문제개요서",
+          "title": "사이버범죄 (권헌영, KISTEP 사회문제해결플랫폼 '22)"
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "label": "초연결·기기의존에 따른 공격표면 확대",
+      "node_type": "CAUSE",
+      "urgency_score": 67,
+      "tech_expectation_score": 68,
+      "quadrant": "TECH_DRIVEN",
+      "description": "디지털 기기 의존도와 초연결 확대로 침해·악성코드의 공격 표면이 넓어짐",
+      "reference_chips": []
+    },
+    {
+      "id": "C09",
+      "label": "기술 발전 대비 법·제도 미비",
+      "node_type": "CAUSE",
+      "urgency_score": 70,
+      "tech_expectation_score": 55,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "기술 변화 속도를 법·제도가 따라가지 못해 신종 범죄 규율·대응에 공백 발생",
+      "reference_chips": []
+    },
+    {
+      "id": "C10",
+      "label": "국경초월 범죄의 국제공조 어려움",
+      "node_type": "CAUSE",
+      "urgency_score": 69,
+      "tech_expectation_score": 54,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "서버·행위자가 국외에 분산되어 수사·공조가 어렵고 추적·검거가 지연됨",
+      "reference_chips": []
+    },
+    {
+      "id": "C11",
+      "label": "플랫폼 기업의 보안·사회적 책임 투자 미흡",
+      "node_type": "CAUSE",
+      "urgency_score": 65,
+      "tech_expectation_score": 62,
+      "quadrant": "BALANCED",
+      "description": "플랫폼 사업자의 보안 투자·이용자 보호 책임이 미흡해 피해가 플랫폼에서 표출·확산",
+      "reference_chips": []
+    },
+    {
+      "id": "E01",
+      "label": "사이버사기 피해 급증",
+      "node_type": "IMPACT",
+      "urgency_score": 75,
+      "tech_expectation_score": 64,
+      "quadrant": "BALANCED",
+      "description": "비대면 거래·투자 열풍에 편승한 사기가 전체 사이버범죄의 64.8%로 최다 발생",
+      "trend_keyword": "중고거래·리딩방 투자사기",
+      "trend_weight": 0.85,
+      "reference_chips": [
+        {
+          "source_type": "동향 브리프",
+          "title": "경찰청 2022 사이버범죄 트렌드"
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "label": "사이버금융범죄(메신저피싱·스미싱·몸캠)",
+      "node_type": "IMPACT",
+      "urgency_score": 73,
+      "tech_expectation_score": 69,
+      "quadrant": "TECH_DRIVEN",
+      "description": "메신저피싱·스미싱·몸캠피싱 등 금융 편취형 범죄가 유형 불문 큰 폭으로 증가",
+      "trend_keyword": "메신저피싱 급증",
+      "trend_weight": 0.88,
+      "reference_chips": [
+        {
+          "source_type": "빅카인즈 집계",
+          "title": "2024-2026 사이버범죄·랜섬웨어·AI 피싱 언론 키워드"
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "label": "개인·위치정보 유출·침해",
+      "node_type": "IMPACT",
+      "urgency_score": 71,
+      "tech_expectation_score": 70,
+      "quadrant": "TECH_DRIVEN",
+      "description": "해킹·침해로 개인·위치정보가 대량 유출되어 2차 범죄의 연료가 됨",
+      "trend_keyword": "개인정보 대량유출",
+      "trend_weight": 0.86,
+      "reference_chips": []
+    },
+    {
+      "id": "E04",
+      "label": "랜섬웨어·침해사고 기업·기관 피해",
+      "node_type": "IMPACT",
+      "urgency_score": 70,
+      "tech_expectation_score": 72,
+      "quadrant": "TECH_DRIVEN",
+      "description": "랜섬웨어 발생이 전년比 141.7% 급증하는 등 기업·기관 침해 피해가 확대",
+      "trend_keyword": "랜섬웨어 급증",
+      "trend_weight": 0.84,
+      "reference_chips": []
+    },
+    {
+      "id": "E05",
+      "label": "사이버명예훼손·모욕 등 불법콘텐츠 피해",
+      "node_type": "IMPACT",
+      "urgency_score": 66,
+      "tech_expectation_score": 50,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "플랫폼 내 이용자 갈등 심화로 명예훼손·모욕이 전년比 49.5% 증가",
+      "trend_keyword": "플랫폼 혐오·모욕 분쟁",
+      "trend_weight": 0.7,
+      "reference_chips": []
+    },
+    {
+      "id": "E06",
+      "label": "사회 신뢰 저하 및 디지털 안전비용 증가",
+      "node_type": "IMPACT",
+      "urgency_score": 68,
+      "tech_expectation_score": 55,
+      "quadrant": "POLICY_DRIVEN",
+      "description": "반복되는 피해로 디지털 환경 신뢰가 저하되고 사회적 대응·보호 비용이 증가",
+      "reference_chips": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_C07-E02",
+      "source": "C07",
+      "target": "E02",
+      "label": "악용 경로"
+    },
+    {
+      "id": "e_C07-E03",
+      "source": "C07",
+      "target": "E03",
+      "label": "유출 유발"
+    },
+    {
+      "id": "e_C07-E04",
+      "source": "C07",
+      "target": "E04",
+      "label": "신종 위협"
+    },
+    {
+      "id": "e_C08-E04",
+      "source": "C08",
+      "target": "E04",
+      "label": "공격표면 확대"
+    },
+    {
+      "id": "e_C04-E01",
+      "source": "C04",
+      "target": "E01",
+      "label": "익명 악용"
+    },
+    {
+      "id": "e_C04-E05",
+      "source": "C04",
+      "target": "E05",
+      "label": "익명 가해"
+    },
+    {
+      "id": "e_C05-E05",
+      "source": "C05",
+      "target": "E05",
+      "label": "죄책감 희박"
+    },
+    {
+      "id": "e_C06-E01",
+      "source": "C06",
+      "target": "E01",
+      "label": "상시 발생"
+    },
+    {
+      "id": "e_C06-E02",
+      "source": "C06",
+      "target": "E02",
+      "label": "국경초월 편취"
+    },
+    {
+      "id": "e_C01-E01",
+      "source": "C01",
+      "target": "E01",
+      "label": "충동 범행"
+    },
+    {
+      "id": "e_C03-E03",
+      "source": "C03",
+      "target": "E03",
+      "label": "보안공백"
+    },
+    {
+      "id": "e_C09-E04",
+      "source": "C09",
+      "target": "E04",
+      "label": "대응 지연"
+    },
+    {
+      "id": "e_C10-E02",
+      "source": "C10",
+      "target": "E02",
+      "label": "추적 곤란"
+    },
+    {
+      "id": "e_C11-E05",
+      "source": "C11",
+      "target": "E05",
+      "label": "플랫폼 표출"
+    },
+    {
+      "id": "e_C02-E05",
+      "source": "C02",
+      "target": "E05",
+      "label": "긴장 발산"
+    },
+    {
+      "id": "e_C09-E06",
+      "source": "C09",
+      "target": "E06",
+      "label": "규율 공백"
+    }
+  ]
+}
